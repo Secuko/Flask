@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="user-profile-field-wrapper">
+    <form class="delete-user-button" action="{{url_for('update',id=userData.id)}}" method="POST" enctype="multipart/form-data">
+        <div class="user-profile-field">
+            <p>Username:</p>
+            <input type="text" placeholder=" {{userData.userName}}" name="username">
+        </div>
+        <div class="user-profile-field">
+            <p>Email:</p>
+            <input type="text" placeholder=" {{userData.email}}" name="email">
+        </div>
+        <div class="user-profile-field">
+            <p>City:</p>
+            <input type="text" placeholder=" {{userData.city}}" name="city">
+        </div>
+        <div class="user-profile-field">
+            <p>Hobby:</p>
+            <input type="text" placeholder=" {{userData.hobby}}" name="hobby">
+        </div>
+        <div class="user-profile-field">
+            <p>Изображение профиля:</p>
+            <!-- <div class="profile-image-wrapper">
+                <p>Изображение профиля:</p>
+                <div class="profile-image">
+                    <img src="" alt="">
+                </div>
+                <input type="file" name="" id="">
+            </div> -->
+            {% if userData.profile_pic %}
+            <img src="{{url_for('static',filename='images/' + userData.profile_pic)}}" align="right" height="150"
+                width="150">
+            {% else %}
+            <img src="{{url_for('static',filename='images/avatar.jpg')}}" align="right" height="150" width="150">
+            {% endif %}
+        </div>
+        <div class="user-profile-field">
+            <input type="file" name="profile_pic">
+        </div>
+        <div class="user-profile-field">
+            <input type="submit" value="Обновить">
+        </div>
+    </form>
+    <form class="delete-user-button" action="{{url_for('logout')}}" method="GET">
+        <div class="user-profile-field">
+            <input type="submit" value="Выйти">
+        </div>
+    </form>
+</div>
+
+{% endblock %}

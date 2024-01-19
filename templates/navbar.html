@@ -1,0 +1,26 @@
+<header class="header">
+    <div class="logo-panel-wrapper">
+        <div class="logo-wrapper">
+            <img class="logo" src="../static/images/logo.png" alt="easy plan" />
+        </div>
+        <div class="action-panel-wrapper">
+            {% for item in panelItems %}
+            <div class="action-panel-item" id="{{item['id']}}">
+                <p class="action-panel-item-text">{{item['title']}}</p>
+                {% if item.isOpen %}
+                <div class="dropdown-menu">
+                    <div>
+                        {% for child in item['listOfChildItems']%}
+                        <div class="dropdownmenu-item">{{ child }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <a href="registration" class="page-link">
+        <p>Аккаунт</p>
+    </a>
+</header>

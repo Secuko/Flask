@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{%for cat,msg in get_flashed_messages(True)%}
+<div class="login-window-input-error">
+    <p>{{ msg }}</p>
+</div>
+{% endfor %}
+<h1>Список пользователей:</h1>
+{% for user in users%}
+<div class="admin-user-info-wrapper">
+    <div class="admin-user-info">
+        <p>{{user.id}}</p>
+    </div>
+    <div class="admin-user-info">
+        <p>{{user.userName}}</p>
+    </div>
+    <div class="admin-user-info">
+        <p>{{user.email}}</p>
+    </div>
+    <form class="delete-user-button" action="{{url_for('delete',id=user.id)}}">
+        <input type="submit" value="delete">
+    </form>
+</div>
+{%endfor%}
+{% endblock %}

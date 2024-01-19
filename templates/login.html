@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="login-page-wrapper">
+    <div class="login-window">
+        <div class="login-window-content-wrapper">
+            <div class="login-window-content-header">
+                Авторизуйтесь!
+            </div>
+            <form class="login-window-content-inputs-wrapper" method="post" action="/login">
+                <div class="login-window-input-element">
+                    <div class="login-form">
+                        <input type="text" size="40" placeholder="Никнейм" class="login-form-input" name="username" />
+                    </div>
+                </div>
+                <div class="login-window-input-element">
+                    <div class="login-form">
+                        <input type="password" size="40" placeholder="Password" class="login-form-input"
+                            name="password" />
+                    </div>
+                    {%for cat,msg in get_flashed_messages(True)%}
+                    <div class="login-window-input-error">
+                        <p>{{ msg }}</p>
+                    </div>
+                    {% endfor %}
+                    <div class="login-window-link">
+                        <a href="registration">Создайте аккаунт</a>
+                    </div>
+                </div>
+                <input type="submit" class="login-window-content-button login-window-content-button-text"
+                    value="Войти">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
